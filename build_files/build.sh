@@ -16,6 +16,9 @@ dnf5 -y copr enable ublue-os/packages
 dnf5 -y install bluefin-backgrounds
 dnf5 -y copr disable ublue-os/packages
 
+# change renderer, to be moved
+export GSK_RENDERER=ngl
+
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
