@@ -2,6 +2,7 @@
 FROM scratch AS ctx
 COPY build_files /
 
+ENV GSK_RENDERER=ngl
 # Base Image
 FROM ghcr.io/ublue-os/bazzite-gnome:latest
 
