@@ -17,7 +17,8 @@ dnf5 -y install bluefin-backgrounds
 dnf5 -y copr disable ublue-os/packages
 
 # change renderer, to be moved
-export GSK_RENDERER=ngl
+touch /etc/profile.d/10-renderer.sh
+echo 'export GSK_RENDERER=ngl' > /etc/profile.d/10-renderer.sh
 
 # Use a COPR Example:
 #
