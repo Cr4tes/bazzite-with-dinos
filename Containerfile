@@ -24,6 +24,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
+    chmod 777 /ctx/environment.sh && \
     /ctx/build.sh && \
     /ctx/environment.sh && \
     ostree container commit
