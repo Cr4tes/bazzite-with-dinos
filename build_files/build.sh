@@ -11,7 +11,8 @@ set -ouex pipefail
 
 # this installs a package from fedora repos
 dnf5 install -y tmux \
-    gnome-shell-extension-dash-to-dock
+    gnome-shell-extension-dash-to-dock \
+    bluefin-schemas
 
 dnf5 -y copr enable ublue-os/packages
 dnf5 -y install bluefin-backgrounds
