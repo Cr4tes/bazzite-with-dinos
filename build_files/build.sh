@@ -10,7 +10,8 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux
+dnf5 install -y tmux \
+    gnome-shell-extension-dash-to-dock
 
 dnf5 -y copr enable ublue-os/packages
 dnf5 -y install bluefin-backgrounds
@@ -19,6 +20,11 @@ dnf5 -y copr disable ublue-os/packages
 # change renderer, to be moved
 touch /etc/profile.d/10-renderer.sh
 echo 'export GSK_RENDERER=ngl' > /etc/profile.d/10-renderer.sh
+
+# Automatic wallpaper changing by month
+HARDCODED_RPM_MONTH="12"
+sed -i "/picture-uri/ s/${HARDCODED_RPM_MONTH}/$(date +%m)/" "/usr/share/glib-2.0/schemas/zz0-bluefin-modifications.gschema.override"
+glib-compile-schemas /usr/share/glib-2.0/schemas
 
 # Use a COPR Example:
 #
