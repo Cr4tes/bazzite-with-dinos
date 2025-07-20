@@ -22,11 +22,13 @@ dnf5 -y copr disable ublue-os/packages
 touch /etc/profile.d/10-renderer.sh
 echo 'export GSK_RENDERER=ngl' > /etc/profile.d/10-renderer.sh
 
+# Remove bazzite schemas
+rm "/usr/share/glib-2.0/schemas/zz0-"*"-bazzite-"*".gschema.override"
 # Automatic wallpaper changing by month
 HARDCODED_RPM_MONTH="12"
 sed -i "/picture-uri/ s/${HARDCODED_RPM_MONTH}/$(date +%m)/" "/usr/share/glib-2.0/schemas/zz0-bluefin-modifications.gschema.override"
 # remove all files after that line
-sed -i '/#-------------- REMAINING SCHEMAS IN THIS SETTING SECTION ARE LOCATED IN DCONF --------------#/,$d' "/usr/share/glib-2.0/schemas/zz0-bluefin-modifications.gschema.override"
+# sed -i '/#-------------- REMAINING SCHEMAS IN THIS SETTING SECTION ARE LOCATED IN DCONF --------------#/,$d' "/usr/share/glib-2.0/schemas/zz0-bluefin-modifications.gschema.override"
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 # Use a COPR Example:
