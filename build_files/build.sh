@@ -2,6 +2,8 @@
 
 set -ouex pipefail
 
+mkdir -p /var/roothome
+
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.
@@ -10,12 +12,10 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux \
-    gnome-shell-extension-dash-to-dock
+dnf5 install -y gnome-shell-extension-dash-to-dock
     
 dnf5 -y copr enable ublue-os/packages
 dnf5 -y install bluefin-backgrounds 
-#    bluefin-schemas 
 dnf5 -y copr disable ublue-os/packages
 
 # change renderer, to be moved
